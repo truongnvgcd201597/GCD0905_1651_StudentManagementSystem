@@ -1,0 +1,15 @@
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\bin\Debug\net6.0\Me_Assignment.exe
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\bin\Debug\net6.0\Me_Assignment.deps.json
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\bin\Debug\net6.0\Me_Assignment.runtimeconfig.json
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\bin\Debug\net6.0\Me_Assignment.dll
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\bin\Debug\net6.0\Me_Assignment.pdb
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.csproj.AssemblyReference.cache
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.AssemblyInfoInputs.cache
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.AssemblyInfo.cs
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.csproj.CoreCompileInputs.cache
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.dll
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\refint\Me_Assignment.dll
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.pdb
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\Me_Assignment.genruntimeconfig.cache
+D:\GDGGCP\C#\Me_Assignment\Me_Assignment\obj\Debug\net6.0\ref\Me_Assignment.dll
