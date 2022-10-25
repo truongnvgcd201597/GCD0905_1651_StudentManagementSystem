@@ -72,7 +72,6 @@ public class Student: IMenu
     public void showMenu()
     {
         Console.WriteLine(" ==========================STUDENT PANEL==========================");
-        Console.WriteLine(" |________________________________________________________________|");
         Console.WriteLine(" |              1: View all student information                   |");
         Console.WriteLine(" |________________________________________________________________|");
         Console.WriteLine(" |              2: View grade                                     |");
@@ -139,28 +138,28 @@ public class Student: IMenu
         }
     }
 
-    public void viewStudentProfile()
-    {
-        //show student information of student who is logged in
-        foreach (var i in Manager.StudentList)
+        public void viewStudentProfile()
         {
-            if (i.studentID == saveOn)
+            //show student information of student who is logged in
+            foreach (var i in Manager.StudentList)
             {
-                Console.WriteLine($"Password: {i.studentHash} | ID: {i.studentID} | Name: {i.name} | Birthdat: {i.birthDate} |\n" +
-                                  $"Address: {i.studentAddress} | Class: {i.Classroom.ClassName} | Subject: {i.Subject.Subject1} |\n" +
-                                  $"{i.StudentGrade.GradeOne} | Grade Two: {i.StudentGrade.GradeTwo} | DemoGrade: {i.StudentGrade.DemoGrade} | Total Grade: {i.StudentGrade.TotalGrade1} |)");
+                if (i.studentID == saveOn)
+                {
+                    Console.WriteLine($"Password: {i.studentHash} | ID: {i.studentID} | Name: {i.name} | Birthdat: {i.birthDate} |\n" +
+                                      $"Address: {i.studentAddress} | Class: {i.Classroom.ClassName} | Subject: {i.Subject.Subject1} |\n" +
+                                      $"{i.StudentGrade.GradeOne} | Grade Two: {i.StudentGrade.GradeTwo} | DemoGrade: {i.StudentGrade.DemoGrade} | Total Grade: {i.StudentGrade.TotalGrade1} |)");
+                }
+            }
+            Console.WriteLine("============================");
+            Console.WriteLine("Press any key to exit)");
+            String choice = Console.ReadLine().ToUpper();
+            switch (choice)
+            {
+                default:
+                    showMenu();
+                    break;
             }
         }
-        Console.WriteLine("============================");
-        Console.WriteLine("Press any key to exit)");
-        String choice = Console.ReadLine().ToUpper();
-        switch (choice)
-        {
-            default:
-                showMenu();
-                break;
-        }
-    }
 
     public void viewStudentGrade()
     {

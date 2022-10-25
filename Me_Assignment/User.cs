@@ -2,38 +2,6 @@ namespace Me_Assignment;
 
 public class User
 {
-    private String name;
-    private int passWord;
-
-    public String Name
-    {
-        get
-        {
-            return name;
-        }
-        set
-        {
-            name = value;
-        }
-    }
-
-    public int Password
-    {
-        get
-        {
-            return passWord;
-        }
-        set
-        {
-            passWord = value;
-        }
-    }
-
-    public void Login()
-    {
-
-    }
-
     public void viewSystem()
     {
         Console.WriteLine("STUDENT MANAGEMENT SYSTEM"); 

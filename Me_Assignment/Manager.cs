@@ -1,5 +1,4 @@
 namespace Me_Assignment;
-
 public class Manager : IMenu
 {
     private int ID;
@@ -24,7 +23,93 @@ public class Manager : IMenu
     {
     }
 
-    public void addStudentProfile()
+    public void showMenu()
+    {
+        Console.WriteLine(" ======================================= ADMIN PANEL =============================================");
+        Console.WriteLine("| 1: Add student information    | 2: View all student information | 3: Update student information |");
+        Console.WriteLine("|_______________________________|_________________________________|_______________________________|");
+        Console.WriteLine("| 4: Delete student information | 5: Update student grade         | 6: Add subject                |");
+        Console.WriteLine("|_______________________________|_________________________________|_______________________________|");
+        Console.WriteLine("| 7: View subject               | 8: Remove subject               | 9: Add class                  |");
+        Console.WriteLine("|_______________________________|_________________________________|_______________________________|");
+        Console.WriteLine("| 10: Remove class              | 11: View class                  | 12: Search student profile    |");
+        Console.WriteLine("|_______________________________|_________________________________|_______________________________|");
+        Console.WriteLine("| 13: Sort students by grades   | 15: Exit                        |           NVTRUONG96          |");
+        Console.WriteLine("|_______________________________|_________________________________|_______________________________|");
+        Console.Write("Enter your choice: ");
+        int choice = Int32.Parse(Console.ReadLine());
+        switch (choice)
+        {
+            case 1:
+                addStudentProfile();
+                break;
+            case 2:
+                viewStudentProfile();
+                break;
+            case 3:
+                modifyStudentProfile();
+                break;
+            case 4:
+                deleteStudentProfile();
+                break;
+            case 5:
+                editStudentGrade();
+                break;
+            case 6:
+                addSubject();
+                break;
+            case 7:
+                viewSubject();
+                break;
+            case 8:
+                removeSubject();
+                break;
+            case 9:
+                addClass();
+                break;
+            case 10:
+                removeClass();
+                break;
+            case 11:
+                viewClass();
+                break;
+            case 12:
+                searchStudentProfile();
+                break;
+            case 13:
+                descascStudentGrade();
+                break;
+            case 14:
+                User user = new User();
+                user.viewSystem();
+                break;
+            default:
+                showMenu();
+                break;
+        }
+    }
+
+    public void userLogin()
+    {
+        while (true)
+        {
+            Console.Write("Username: ");
+            String username = Console.ReadLine().ToLower();
+            Console.Write("Password: ");
+            String password = Console.ReadLine().ToLower();
+
+            if (username == "truongnvgcd201597" && password == "123123")
+            {
+                showMenu();
+            }
+            else
+            {
+                Console.WriteLine("Username or password wrong!!!");
+            }
+        }
+    }
+//CASE 1
+ public void addStudentProfile()
     {
         if (Student.classList.Count == 0)
         {
@@ -56,6 +141,13 @@ public class Manager : IMenu
 
         Console.Write("Enter student's name: ");
         String studentName = Console.ReadLine();
+        while (checkName(studentName) == false)
+        {
+            Console.WriteLine("Invalid input name");
+            Console.Write("Enter student's name: ");
+            String studentNames = Console.ReadLine();
+            studentName = studentNames;
+        }
         Console.Write("Enter student's address: ");
         String studentAddress = Console.ReadLine();
         Console.Write("Enter student's day of birth: ");
@@ -63,13 +155,14 @@ public class Manager : IMenu
         int day = int.Parse(studentDOB[0]);
         int month = int.Parse(studentDOB[1]);
         int year = int.Parse(studentDOB[2]);
-        while (checkDate(day, month, year) == true)
+        while (checkDate(day, month, year) == false)
         {
             Console.WriteLine("Invalid birthdate");
+            Console.Write("Enter student's day of birth: ");
             String[] studentDOBs = Console.ReadLine().Split('/');
-            int days = int.Parse(studentDOB[0]);
-            int months = int.Parse(studentDOB[1]);
-            int years = int.Parse(studentDOB[2]);
+            int days = int.Parse(studentDOBs[0]);
+            int months = int.Parse(studentDOBs[1]);
+            int years = int.Parse(studentDOBs[2]);
             day = days;
             month = months;
             year = years;
@@ -83,13 +176,25 @@ public class Manager : IMenu
             string subjectNew = Console.ReadLine();
             subject = subjectNew;
         }
-
         Console.Write("Enter GradeOne's grade: ");
         int gradeOne = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter GradeTwo's grade: ");
         int gradeTwo = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter Implemention Tests's grade: ");
         int demoGrade = Convert.ToInt32(Console.ReadLine());
+        while (checkGrade(gradeOne, gradeTwo, demoGrade) == false)
+        {
+            Console.WriteLine("Invalid input grade");
+            Console.Write("Enter GradeOne's grade: ");
+            int gradeOnes = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter GradeTwo's grade: ");
+            int gradeTwos = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Implemention Tests's grade: ");
+            int demoGrades = Convert.ToInt32(Console.ReadLine());
+            gradeOne = gradeOnes;
+            gradeTwo = gradeTwos;
+            demoGrade = demoGrades;
+        }
         try
         {
             studentList.Add(new Student(new Class(studentClass), studentID, studentName, studentAddress,
@@ -115,7 +220,27 @@ public class Manager : IMenu
                 break;
         }
     }
+// CASE 2:
+    public void viewStudentProfile()
+    {
+        foreach (Student std in studentList)
+        {
+            Console.WriteLine($"Password: {std.studentHash}| ID: {std.studentID} | Name: {std.name} | Birthdate: {std.birthDate} |\n" +
+                              $"Address: {std.studentAddress} | Class: {std.Classroom.ClassName} | Subject: {std.Subject.Subject1} |\n" +
+                              $"{std.StudentGrade.GradeOne} | Grade Two: {std.StudentGrade.GradeTwo} | DemoGrade: {std.StudentGrade.DemoGrade} | Total Grade: {std.StudentGrade.TotalGrade1}|");
+        }
 
+        Console.WriteLine("============================");
+        Console.WriteLine("Press any key to exit)");
+        String choice = Console.ReadLine().ToUpper();
+        switch (choice)
+        {
+            default:
+                showMenu();
+                break;
+        }
+    }
+//CASE 3:
     public void deleteStudentProfile()
     {
         Console.Write("Enter studentID that you want to delete: ");
@@ -134,7 +259,7 @@ public class Manager : IMenu
             deleteStudentProfile();
         }
     }
-
+//CASE 4:
     public void modifyStudentProfile()
     {
         Console.Write("Enter studentID that you want to modify: ");
@@ -180,135 +305,20 @@ public class Manager : IMenu
 
         showMenu();
     }
-
-    public void viewStudentProfile()
-    {
-        foreach (Student std in studentList)
-        {
-            Console.WriteLine($"ID: {std.studentID} | Name: {std.name} | Birthdate: {std.birthDate} |\n" +
-                              $"Address: {std.studentAddress} | Class: {std.Classroom.ClassName} | Subject: {std.Subject.Subject1} |\n" +
-                              $"{std.StudentGrade.GradeOne} | Grade Two: {std.StudentGrade.GradeTwo} | DemoGrade: {std.StudentGrade.DemoGrade} | Total Grade: {std.StudentGrade.TotalGrade1}|");
-        }
-
-        Console.WriteLine("============================");
-        Console.WriteLine("Press any key to exit)");
-        String choice = Console.ReadLine().ToUpper();
-        switch (choice)
-        {
-            default:
-                showMenu();
-                break;
-        }
-    }
-
-    public void showMenu()
-    {
-        Console.WriteLine(" ======================== ADMIN PANEL ===========================");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              1: Add student information                        |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              2: View all student information                   |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              3: Update student information                     |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              4: Remove student information                     |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              5: Add subject                                    |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              6. View Subject                                   |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              7: Add Class                                      |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              8: Remove Class                                   |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.WriteLine("|              Exit program                                      |");
-        Console.WriteLine("|________________________________________________________________|");
-        Console.Write("Enter your choice: ");
-        int choice = Int32.Parse(Console.ReadLine());
-        switch (choice)
-        {
-            case 1:
-                addStudentProfile();
-                break;
-            case 2:
-                viewStudentProfile();
-                break;
-            case 3:
-                modifyStudentProfile();
-                break;
-            case 4:
-                deleteStudentProfile();
-                break;
-            case 5:
-                editStudentGrade();
-                break;
-            case 6:
-                addSubject();
-                break;
-            case 7:
-                viewSubject();
-                break;
-            case 8:
-                removeSubject();
-                break;
-            case 9:
-                addClass();
-                break;
-            case 10:
-                removeClass();
-                break;
-            case 12:
-                viewClass();
-                break;
-            case 13:
-                searchStudentProfile();
-                break;
-            case 14:
-                descascStudentGrade();
-                break;
-            case 15:
-                User user = new User();
-                user.viewSystem();
-                break;
-            default:
-                showMenu();
-                break;
-        }
-    }
-
-    public void userLogin()
-    {
-        while (true)
-        {
-            Console.Write("Username: ");
-            String username = Console.ReadLine().ToLower();
-            Console.Write("Password: ");
-            String password = Console.ReadLine().ToLower();
-
-            if (username == "truongnvgcd201597" && password == "123123")
-            {
-                showMenu();
-            }
-            else
-            {
-                Console.WriteLine("Username or password wrong!!!");
-            }
-        }
-    }
-
-
     public void removeClass()
     {
-        Console.WriteLine("Enter class that you want to delete: ");
+        Console.Write("Enter class that you want to delete: ");
         String className = Console.ReadLine();
         var itemToRemove = Student.classList.SingleOrDefault(r => r.ClassName == className);
         if (itemToRemove != null)
         {
             Student.classList.Remove(itemToRemove);
+            showMenu();
         }
         else
         {
             Console.WriteLine("Please re-enter");
+            removeClass();
         }
 
         //display list
@@ -353,7 +363,7 @@ public class Manager : IMenu
     public void removeSubject()
     {
         Console.Write("Enter name of subject that you want to delete: ");
-        String delStudent = Console.ReadLine().ToUpper();
+        String delStudent = Console.ReadLine();
         if (Student.subjectList.Exists(x => x.Subject1 == delStudent))
         {
             Student.subjectList.Remove(Student.subjectList.SingleOrDefault(q => q.Subject1 == delStudent));
@@ -365,7 +375,7 @@ public class Manager : IMenu
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("No student matches to your input, please try again!");
             Console.WriteLine("-----------------------------------------");
-            deleteStudentProfile();
+            removeSubject();
         }
     }
 
@@ -381,11 +391,11 @@ public class Manager : IMenu
                 {
                     Console.WriteLine("-----------------------------------");
                     Console.WriteLine("Subject name: " + Student.subjectList[i].Subject1);
-                    Console.WriteLine("Enter first grade for student");
+                    Console.Write("Enter first grade for student");
                     int one = Int32.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter second grade for student");
+                    Console.Write("Enter second grade for student");
                     int two = Int32.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter test grade");
+                    Console.Write("Enter test grade");
                     int test = Int32.Parse(Console.ReadLine());
                     studentList[i].StudentGrade.GradeOne = one;
                     studentList[i].StudentGrade.GradeTwo = two;
@@ -466,6 +476,15 @@ public class Manager : IMenu
                                   $"{std.StudentGrade.GradeOne} | Grade Two: {std.StudentGrade.GradeTwo} | DemoGrade: {std.StudentGrade.DemoGrade} | Total Grade: {std.StudentGrade.TotalGrade1} |");
             }
         }
+        Console.WriteLine("============================");
+        Console.WriteLine("Press any key to exit)");
+        String choice = Console.ReadLine().ToUpper();
+        switch (choice)
+        {
+            default:
+                showMenu();
+                break;
+        }
     }
 
     public void descascStudentGrade()
@@ -483,6 +502,15 @@ public class Manager : IMenu
                                   "-" + i.StudentGrade.GradeTwo + "-" + i.StudentGrade.DemoGrade + "-" +
                                   i.StudentGrade.TotalGrade1);
             }
+            Console.WriteLine("============================");
+            Console.WriteLine("Press any key to exit)");
+            String choice = Console.ReadLine().ToUpper();
+            switch (choice)
+            {
+                default:
+                    showMenu();
+                    break;
+            }
         }
         else if (Choice == "birthdate")
         {
@@ -494,6 +522,15 @@ public class Manager : IMenu
                                   + "-" + i.birthDate +
                                   "-" + i.StudentGrade.GradeTwo + "-" + i.StudentGrade.DemoGrade + "-" +
                                   i.StudentGrade.TotalGrade1);
+            }
+            Console.WriteLine("============================");
+            Console.WriteLine("Press any key to exit)");
+            String choice = Console.ReadLine().ToUpper();
+            switch (choice)
+            {
+                default:
+                    showMenu();
+                    break;
             }
         }
     }
@@ -530,18 +567,18 @@ public class Manager : IMenu
 
     private Boolean checkDate(int day, int month, int year)
     {
-        if (day > 0 && day < 31 && month > 0 && month < 12 && year > 1935 && year < 2004) return true;
+        if ((day > 0 && day < 31) && (month > 0 && month < 12) && (year > 1935 && year < 2004)) return true;
         else return false;
     }
     //check grade
     private Boolean checkGrade(int grade , int grade2 , int grade3)
     {
-        if (grade > 0 && grade < 10 && grade2 > 0 && grade2 < 10 && grade3 > 0 && grade3 < 10) return true;
+        if ((grade > 0 && grade < 10) && (grade2 > 0 && grade2 < 10) && (grade3 > 0 && grade3 < 10)) return true;
         else return false;
     }
     private Boolean checkName(String name){
         if(typeof(String) == name.GetType()) return true;
         else return false;
     }
-    
+
 }
