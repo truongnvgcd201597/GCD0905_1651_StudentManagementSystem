@@ -1,7 +1,7 @@
 namespace Me_Assignment;
 
-interface IMenu
+public abstract class AMenu
 {
-    void showMenu();
-    void userLogin();
+    public abstract void showMenu();
+    public abstract void userLogin();
 }

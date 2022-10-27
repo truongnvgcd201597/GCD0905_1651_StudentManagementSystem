@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Me_Assignment;
 
-public class Student: IMenu
+public class Student: AMenu
 {
     public string studentHash { get; set; }
     public string studentID { get; set; }
@@ -69,7 +69,7 @@ public class Student: IMenu
     {
     }
 
-    public void showMenu()
+    public override void showMenu()
     {
         Console.WriteLine(" ==========================STUDENT PANEL==========================");
         Console.WriteLine(" |              1: View all student information                   |");
@@ -103,7 +103,7 @@ public class Student: IMenu
         }
     }
 
-    public void userLogin()
+    public override void userLogin()
     {
         Console.Write("Username : ");
         String username = Console.ReadLine().ToUpper();

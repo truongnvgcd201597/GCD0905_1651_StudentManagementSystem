@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GDGGCP\\C#\\Me_Assignment\\Me_Assignment\\Me_Assignment.csproj",
+      "projectUniqueName": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
       "projectName": "Me_Assignment",
-      "projectPath": "D:\\GDGGCP\\C#\\Me_Assignment\\Me_Assignment\\Me_Assignment.csproj",
+      "projectPath": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
       "packagesPath": "C:\\Users\\NVTRUONG\\.nuget\\packages\\",
-      "outputPath": "D:\\GDGGCP\\C#\\Me_Assignment\\Me_Assignment\\obj\\",
+      "outputPath": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NVTRUONG\\AppData\\Roaming\\NuGet\\NuGet.Config"

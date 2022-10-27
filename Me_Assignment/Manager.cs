@@ -1,5 +1,5 @@
 namespace Me_Assignment;
-public class Manager : IMenu
+public class Manager : AMenu
 {
     private int ID;
     private String managerName;
@@ -23,7 +23,7 @@ public class Manager : IMenu
     {
     }
 
-    public void showMenu()
+    public override void showMenu()
     {
         Console.WriteLine(" ======================================= ADMIN PANEL =============================================");
         Console.WriteLine("| 1: Add student information    | 2: View all student information | 3: Update student information |");
@@ -89,7 +89,7 @@ public class Manager : IMenu
         }
     }
 
-    public void userLogin()
+    public override void userLogin()
     {
         while (true)
         {
