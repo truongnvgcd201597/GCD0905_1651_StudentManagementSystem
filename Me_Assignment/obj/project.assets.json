@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\NVTRUONG\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
       "projectName": "Me_Assignment",
-      "projectPath": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
-      "packagesPath": "C:\\Users\\NVTRUONG\\.nuget\\packages\\",
-      "outputPath": "D:\\GDGGCP\\C#\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\Me_Assignment.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GCD0905_1651_StudentManagementSystem\\Me_Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\NVTRUONG\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Admin\\.dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

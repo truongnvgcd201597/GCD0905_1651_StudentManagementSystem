@@ -1,5 +1,5 @@
 namespace Me_Assignment;
-public class Manager : AMenu
+public class Manager : Menu, IManageStudentProfile
 {
     private int ID;
     private String managerName;
@@ -109,9 +109,9 @@ public class Manager : AMenu
         }
     }
 //CASE 1
- public void addStudentProfile()
-    {
-        if (Student.classList.Count == 0)
+public void addStudentProfile()
+{
+      if (Student.classList.Count == 0)
         {
             Console.WriteLine("Empty class");
             addClass();
@@ -219,93 +219,97 @@ public class Manager : AMenu
                 showMenu();
                 break;
         }
-    }
-// CASE 2:
-    public void viewStudentProfile()
-    {
-        foreach (Student std in studentList)
-        {
-            Console.WriteLine($"Password: {std.studentHash}| ID: {std.studentID} | Name: {std.name} | Birthdate: {std.birthDate} |\n" +
-                              $"Address: {std.studentAddress} | Class: {std.Classroom.ClassName} | Subject: {std.Subject.Subject1} |\n" +
-                              $"{std.StudentGrade.GradeOne} | Grade Two: {std.StudentGrade.GradeTwo} | DemoGrade: {std.StudentGrade.DemoGrade} | Total Grade: {std.StudentGrade.TotalGrade1}|");
-        }
+}
 
-        Console.WriteLine("============================");
-        Console.WriteLine("Press any key to exit)");
-        String choice = Console.ReadLine().ToUpper();
-        switch (choice)
-        {
-            default:
-                showMenu();
-                break;
-        }
-    }
-//CASE 3:
-    public void deleteStudentProfile()
+// CASE 2:
+public void viewStudentProfile()
+{
+    foreach (Student std in studentList)
     {
-        Console.Write("Enter studentID that you want to delete: ");
-        String delStudent = Console.ReadLine().ToUpper();
-        if (studentList.Exists(x => x.studentID == delStudent))
-        {
-            studentList.Remove(studentList.SingleOrDefault(q => q.studentID == delStudent));
-            Console.WriteLine("Delete successfully");
+        Console.WriteLine($"Password: {std.studentHash}| ID: {std.studentID} | Name: {std.name} | Birthdate: {std.birthDate} |\n" +
+                          $"Address: {std.studentAddress} | Class: {std.Classroom.ClassName} | Subject: {std.Subject.Subject1} |\n" +
+                          $"{std.StudentGrade.GradeOne} | Grade Two: {std.StudentGrade.GradeTwo} | DemoGrade: {std.StudentGrade.DemoGrade} | Total Grade: {std.StudentGrade.TotalGrade1}|");
+    }
+
+    Console.WriteLine("============================");
+    Console.WriteLine("Press any key to exit)");
+    String choice = Console.ReadLine().ToUpper();
+    switch (choice)
+    {
+        default:
             showMenu();
-        }
-        else
-        {
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("No student matches to your input, please try again!");
-            Console.WriteLine("-----------------------------------------");
-            deleteStudentProfile();
-        }
+            break;
     }
-//CASE 4:
-    public void modifyStudentProfile()
+}
+
+//CASE 3:
+public void deleteStudentProfile()
+{
+    Console.Write("Enter studentID that you want to delete: ");
+    String delStudent = Console.ReadLine().ToUpper();
+    if (studentList.Exists(x => x.studentID == delStudent))
     {
-        Console.Write("Enter studentID that you want to modify: ");
-        String modStudent = Console.ReadLine().ToUpper();
-        if (studentList.Exists(x => x.studentID == modStudent))
+        studentList.Remove(studentList.SingleOrDefault(q => q.studentID == delStudent));
+        Console.WriteLine("Delete successfully");
+        showMenu();
+    }
+    else
+    {
+        Console.WriteLine("-----------------------------------------");
+        Console.WriteLine("No student matches to your input, please try again!");
+        Console.WriteLine("-----------------------------------------");
+        deleteStudentProfile();
+    }
+}
+
+//CASE 4:
+public void modifyStudentProfile()
+{
+    Console.Write("Enter studentID that you want to modify: ");
+    String modStudent = Console.ReadLine().ToUpper();
+    if (studentList.Exists(x => x.studentID == modStudent))
+    {
+        Console.Write("Enter part that you want to modify (Delete only 'class' and 'address' and 'password'): ");
+        String modPart = Console.ReadLine().ToLower();
+        for (int i = 0; i < studentList.Count; i++)
         {
-            Console.Write("Enter part that you want to modify (Delete only 'class' and 'address' and 'password'): ");
-            String modPart = Console.ReadLine().ToLower();
-            for (int i = 0; i < studentList.Count; i++)
+            if (studentList[i].studentID == modStudent)
             {
-                if (studentList[i].studentID == modStudent)
+                Student student = studentList[i];
+                switch (modPart.ToLower())
                 {
-                    Student student = studentList[i];
-                    switch (modPart.ToLower())
-                    {
-                        case "class":
-                            Console.Write("Enter student's new class: ");
-                            student.Classroom.ClassName = Console.ReadLine();
-                            break;
-                        case "address":
-                            Console.Write("Enter student's new address: ");
-                            student.studentAddress = Console.ReadLine();
-                            break;
-                        case "password":
-                            Console.Write("Enter student's new password: ");
-                            student.studentHash = Console.ReadLine();
-                            break;
-                        default:
-                            Console.WriteLine("Invalid ");
-                            modifyStudentProfile();
-                            break;
-                    }
+                    case "class":
+                        Console.Write("Enter student's new class: ");
+                        student.Classroom.ClassName = Console.ReadLine();
+                        break;
+                    case "address":
+                        Console.Write("Enter student's new address: ");
+                        student.studentAddress = Console.ReadLine();
+                        break;
+                    case "password":
+                        Console.Write("Enter student's new password: ");
+                        student.studentHash = Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid ");
+                        modifyStudentProfile();
+                        break;
                 }
             }
         }
-        else
-        {
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("No student matches to your input, please try again!");
-            Console.WriteLine("-----------------------------------------");
-            modifyStudentProfile();
-        }
-
-        showMenu();
     }
-    public void removeClass()
+    else
+    {
+        Console.WriteLine("-----------------------------------------");
+        Console.WriteLine("No student matches to your input, please try again!");
+        Console.WriteLine("-----------------------------------------");
+        modifyStudentProfile();
+    }
+
+    showMenu();
+}
+
+public void removeClass()
     {
         Console.Write("Enter class that you want to delete: ");
         String className = Console.ReadLine();

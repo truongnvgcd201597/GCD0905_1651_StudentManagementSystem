@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Me_Assignment;
 
-public class Student: AMenu
+public class Student : Menu
 {
     public string studentHash { get; set; }
     public string studentID { get; set; }
@@ -124,7 +124,7 @@ public class Student: AMenu
             }
         }
     }
-
+    
     public bool validateAccount(String userid, String password)
     {
         //if student id and password of student match with user input then return true
@@ -210,4 +210,5 @@ public class Student: AMenu
         rngCrypt.GetBytes(rgb);
         return Convert.ToBase64String(rgb);
     }
+    
 }
